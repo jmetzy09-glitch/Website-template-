@@ -13,6 +13,10 @@ interface FooterProps {
   hours: string;
   serviceArea: string[];
   nav: NavItem[];
+  /** Privacy, terms, etc. Omit on sites that do not have them yet. */
+  legalLinks?: NavItem[];
+  /** Small print under the copyright, e.g. a demo disclaimer. */
+  note?: string;
 }
 
 export function Footer({
@@ -26,8 +30,11 @@ export function Footer({
   hours,
   serviceArea,
   nav,
+  legalLinks = [],
+  note,
 }: FooterProps) {
   const year = new Date().getFullYear();
+  const links = [...nav, ...legalLinks];
   return (
     <footer className="bg-ink text-stone-300">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
@@ -53,23 +60,13 @@ export function Footer({
         <nav aria-label="Footer">
           <p className="text-sm font-semibold uppercase tracking-wider text-stone-400">Company</p>
           <ul className="mt-4 space-y-2 text-sm">
-            {nav.map((item) => (
+            {links.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="hover:text-white hover:underline">
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href="/privacy" className="hover:text-white hover:underline">
-                Privacy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms" className="hover:text-white hover:underline">
-                Terms
-              </Link>
-            </li>
           </ul>
         </nav>
 
@@ -83,8 +80,11 @@ export function Footer({
         </div>
       </Container>
       <div className="border-t border-white/10">
-        <Container className="py-5 text-xs text-stone-500">
-          &copy; {year} {businessName.replace(/\.$/, "")}. All rights reserved.
+        <Container className="space-y-1 py-5 text-xs text-stone-500">
+          <p>
+            &copy; {year} {businessName.replace(/\.$/, "")}. All rights reserved.
+          </p>
+          {note ? <p>{note}</p> : null}
         </Container>
       </div>
     </footer>

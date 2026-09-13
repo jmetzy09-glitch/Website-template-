@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Brand tokens.
+ * Brand tokens for the agency site (Concho Web Co.).
  * Colour values mirror brand.accent in site.config.ts. Change them together.
  * One accent colour, warm neutrals, no gradients.
  */
@@ -18,6 +18,30 @@
   --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/*
+ * Per-site themes. A theme class on <html> overrides the tokens above, so the
+ * same components render a different brand. Add one block per client site.
+ */
+.theme-roofing {
+  --color-ink: #1c1917;
+  --color-ink-muted: #5c554d;
+  --color-paper: #f5f2ec;
+  --color-surface: #ffffff;
+  --color-line: #e4ded4;
+  --color-accent: #c2410c;
+  --color-accent-strong: #9a3412;
+  --color-accent-soft: #fed7aa;
+  --font-heading: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
+}
+.theme-roofing h1,
+.theme-roofing h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.theme-roofing h3 {
+  letter-spacing: 0.01em;
 }
 
 @layer base {

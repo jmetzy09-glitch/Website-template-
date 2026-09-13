@@ -18,10 +18,13 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "roofing-demo",
-    title: "Roofing Company",
-    category: "Home Services",
+    title: "West Texas Roofing Co.",
+    category: "Roofing and storm restoration",
     summary:
-      "Storm damage, insurance claims and free inspections, with a sticky call bar on mobile.",
+      "A conversion-focused site built around free roof inspections and storm-damage leads, with insurance-claim help and financing front and center.",
+    image: "/images/examples/roofing-demo.jpg",
+    imageAlt: "Homepage of the West Texas Roofing Co. demo website",
+    href: "/demos/roofing",
   },
   {
     slug: "hvac-demo",

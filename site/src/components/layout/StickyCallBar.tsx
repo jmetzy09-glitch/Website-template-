@@ -20,7 +20,7 @@ export function StickyCallBar({ phoneHref, primaryCTA }: StickyCallBarProps) {
         Call now
       </ButtonLink>
       <ButtonLink href={primaryCTA.href} variant="primary">
-        Free review
+        {primaryCTA.shortLabel ?? primaryCTA.label}
       </ButtonLink>
     </div>
   );

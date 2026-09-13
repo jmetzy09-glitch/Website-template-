@@ -25,6 +25,8 @@ export interface NavItem {
 export interface CallToAction {
   label: string;
   href: string;
+  /** Shorter wording for tight spaces such as the mobile call bar. */
+  shortLabel?: string;
 }
 
 export interface SiteConfig {
@@ -119,7 +121,7 @@ export const siteConfig: SiteConfig = {
   },
 
   conversion: {
-    primaryCTA: { label: "Get a Free Website Review", href: "/contact" },
+    primaryCTA: { label: "Get a Free Website Review", shortLabel: "Free review", href: "/contact" },
     secondaryCTA: { label: "See Our Work", href: "/examples" },
   },
 

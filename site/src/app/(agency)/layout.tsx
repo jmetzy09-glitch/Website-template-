@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import { siteConfig, phoneHref } from "@/content/site.config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: siteConfig.seo.defaultDescription,
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { business, nav, conversion, features } = siteConfig;
   return (
     <html lang="en" className={archivo.variable}>
@@ -50,10 +50,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           hours={business.hours}
           serviceArea={business.serviceArea}
           nav={nav}
+          legalLinks={[
+            { label: "Privacy", href: "/privacy" },
+            { label: "Terms", href: "/terms" },
+          ]}
         />
-        {features.stickyCallBar ? (
-          <StickyCallBar phoneHref={phoneHref} primaryCTA={conversion.primaryCTA} />
-        ) : null}
+        {features.stickyCallBar ? <StickyCallBar phoneHref={phoneHref} primaryCTA={conversion.primaryCTA} /> : null}
       </body>
     </html>
   );
