@@ -6,6 +6,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCallBar } from "@/components/layout/StickyCallBar";
 import { Logo } from "@/components/ui/Logo";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { localBusinessJsonLd, absoluteUrl } from "@/lib/schema";
 import { cn } from "@/lib/cn";
 
 /** Headings use Manrope; the wordmark uses Orbitron. Body text stays on the system stack. */
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.business.name}`,
   },
   description: siteConfig.seo.defaultDescription,
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     siteName: siteConfig.business.name,
@@ -35,6 +38,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={cn(manrope.variable, orbitron.variable)}>
       <body className={cn("min-h-dvh flex flex-col", features.stickyCallBar && "pb-[4.5rem] md:pb-0")}>
+        <JsonLd
+          data={localBusinessJsonLd(siteConfig, {
+            url: absoluteUrl(siteConfig.seo.siteUrl),
+            image: absoluteUrl(siteConfig.seo.siteUrl, "/images/examples/roofing-demo.jpg"),
+            description: siteConfig.seo.defaultDescription,
+          })}
+        />
         <Header
           businessName={business.name}
           phone={business.phone}

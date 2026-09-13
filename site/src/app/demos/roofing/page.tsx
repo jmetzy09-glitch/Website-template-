@@ -10,6 +10,8 @@ import { ReviewsCards } from "@/components/sections/ReviewsCards";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FaqList } from "@/components/sections/FaqList";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { faqJsonLd } from "@/lib/schema";
 
 export default function RoofingHomePage() {
   const { business, conversion } = roofingConfig;
@@ -17,6 +19,7 @@ export default function RoofingHomePage() {
 
   return (
     <>
+      <JsonLd data={faqJsonLd(roofingFaq)} />
       <HeroImage
         eyebrow={h.hero.eyebrow}
         headline={h.hero.headline}

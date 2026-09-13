@@ -5,6 +5,8 @@ import { faq } from "@/content/faq";
 import { PricingTiers } from "@/components/sections/PricingTiers";
 import { FaqList } from "@/components/sections/FaqList";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { faqJsonLd } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -15,6 +17,7 @@ export default function PricingPage() {
   const { business, conversion } = siteConfig;
   return (
     <>
+      <JsonLd data={faqJsonLd(faq)} />
       <PricingTiers
         eyebrow="Pricing"
         heading="Clear one-time prices. No surprises."

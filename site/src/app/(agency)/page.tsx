@@ -17,6 +17,8 @@ import { ReviewsCards } from "@/components/sections/ReviewsCards";
 import { PricingTiers } from "@/components/sections/PricingTiers";
 import { FaqList } from "@/components/sections/FaqList";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { faqJsonLd } from "@/lib/schema";
 
 function renderSection(section: HomeSection, index: number) {
   const { conversion, business, features } = siteConfig;
@@ -105,5 +107,11 @@ function renderSection(section: HomeSection, index: number) {
 }
 
 export default function HomePage() {
-  return <>{homeSections.map(renderSection)}</>;
+  const hasFaq = homeSections.some((s) => s.type === "faq");
+  return (
+    <>
+      {hasFaq ? <JsonLd data={faqJsonLd(faq)} /> : null}
+      {homeSections.map(renderSection)}
+    </>
+  );
 }

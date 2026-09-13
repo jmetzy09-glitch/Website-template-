@@ -4,6 +4,9 @@ import { roofingServices } from "@/content/demos/roofing/content";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { SplitFeature } from "@/components/sections/SplitFeature";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { serviceJsonLd, absoluteUrl } from "@/lib/schema";
+import { siteConfig as agencyConfig } from "@/content/site.config";
 
 export const metadata: Metadata = {
   title: "Roofing Services",
@@ -15,6 +18,18 @@ export default function RoofingServicesPage() {
   const { business, conversion } = roofingConfig;
   return (
     <>
+      <JsonLd
+        data={roofingServices.map((s) =>
+          serviceJsonLd({
+            name: s.name,
+            description: s.summary,
+            url: absoluteUrl(agencyConfig.seo.siteUrl, `${BASE}/services#${s.slug}`),
+            businessUrl: absoluteUrl(agencyConfig.seo.siteUrl, BASE),
+            businessName: business.name,
+            areaServed: business.serviceArea,
+          }),
+        )}
+      />
       <Section labelledBy="services-intro-heading" tone="surface" className="border-b border-line !py-12 sm:!py-16">
         <SectionHeading
           id="services-intro-heading"

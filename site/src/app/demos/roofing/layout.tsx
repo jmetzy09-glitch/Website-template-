@@ -8,6 +8,8 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyCallBar } from "@/components/layout/StickyCallBar";
 import { DemoBanner } from "@/components/layout/DemoBanner";
 import { cn } from "@/lib/cn";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { localBusinessJsonLd, absoluteUrl } from "@/lib/schema";
 
 /**
  * Root layout for the roofing demo. A separate root layout (not nested under
@@ -28,6 +30,7 @@ export const metadata: Metadata = {
     template: `%s | ${roofingConfig.business.name}`,
   },
   description: roofingConfig.seo.defaultDescription,
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     siteName: roofingConfig.business.name,
@@ -46,6 +49,13 @@ export default function RoofingLayout({ children }: { children: React.ReactNode 
   return (
     <html lang="en" className={cn(barlow.variable, "theme-roofing")}>
       <body className="min-h-dvh flex flex-col pb-[4.5rem] md:pb-0">
+        <JsonLd
+          data={localBusinessJsonLd(roofingConfig, {
+            url: absoluteUrl(agencyConfig.seo.siteUrl, BASE),
+            image: absoluteUrl(agencyConfig.seo.siteUrl, "/images/demos/roofing/hero-carrying-shingles.jpg"),
+            description: roofingConfig.seo.defaultDescription,
+          })}
+        />
         <DemoBanner demoBusinessName={business.name} agencyName={agencyConfig.business.name} agencyHref="/" />
         <Header
           businessName={business.name}

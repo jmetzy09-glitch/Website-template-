@@ -7,6 +7,8 @@ import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { CheckIcon, ArrowRightIcon } from "@/components/ui/Icons";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { JsonLd } from "@/components/ui/JsonLd";
+import { serviceJsonLd, absoluteUrl } from "@/lib/schema";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -29,6 +31,16 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
 
   return (
     <>
+      <JsonLd
+        data={serviceJsonLd({
+          name: service.name,
+          description: service.summary,
+          url: absoluteUrl(siteConfig.seo.siteUrl, `/services/${service.slug}`),
+          businessUrl: absoluteUrl(siteConfig.seo.siteUrl),
+          businessName: business.name,
+          areaServed: business.serviceArea,
+        })}
+      />
       <Section labelledBy="service-heading" tone="surface" containerClassName="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Service</p>
