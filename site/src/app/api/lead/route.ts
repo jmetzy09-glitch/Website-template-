@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { leadSchema, fieldErrorsFrom, type LeadInput } from "@/lib/validate";
+import { siteConfig } from "@/content/site.config";
 
 /**
  * Lead intake. Validates, drops honeypot hits, rate limits per IP, then emails
@@ -85,7 +86,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, delivered: false });
   }
 
-  const to = process.env.LEAD_TO_EMAIL;
+  const to = process.env.LEAD_TO_EMAIL ?? siteConfig.business.email;
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!to || !apiKey) {

@@ -94,8 +94,8 @@ export const siteConfig: SiteConfig = {
   business: {
     name: "Concho Web Co.", // TODO(owner): working name until the real one is chosen
     tagline: "Websites built to bring local businesses more customers",
-    phone: "(325) 555-0100", // TODO(owner): real phone number
-    email: "hello@example.com", // TODO(owner): real email
+    phone: "(325) 895-2950",
+    email: "cmetz27316@gmail.com",
     address: {
       city: "San Angelo",
       state: "TX",
