@@ -143,7 +143,7 @@ export const homeSections: HomeSection[] = [
       {
         title: "We help you generate leads",
         description:
-          "Optional monthly plans for reviews, Google Business Profile, follow-up and reporting.",
+          "Optional monthly plans for hosting, Google Business Profile, analytics and reporting.",
       },
     ],
   },
@@ -159,7 +159,7 @@ export const homeSections: HomeSection[] = [
     eyebrow: "Why us",
     heading: "Built for local businesses. Not generic templates.",
     items: [
-      { title: "Fast", description: "Pages load in under two seconds on a phone." },
+      { title: "Fast", description: "Built for fast loading and excellent mobile performance." },
       {
         title: "Mobile-first",
         description: "Designed on a phone screen first, because that is where your customers are.",
@@ -191,7 +191,7 @@ export const homeSections: HomeSection[] = [
     type: "pricing",
     eyebrow: "Pricing",
     heading: "Clear one-time prices. No surprises.",
-    intro: "Every package includes design, build, launch and a walkthrough. Optional monthly plans for hosting, reviews and lead follow-up are available after launch.",
+    intro: "Every package includes design, build, launch and a walkthrough. Optional monthly plans for hosting, Google Business Profile and reporting are available after launch.",
     footnote: "Prices are starting points. Larger sites and custom integrations are quoted after the free review.",
   },
   {

@@ -84,7 +84,7 @@ export function Footer({
       </Container>
       <div className="border-t border-white/10">
         <Container className="py-5 text-xs text-stone-500">
-          &copy; {year} {businessName}. All rights reserved.
+          &copy; {year} {businessName.replace(/\.$/, "")}. All rights reserved.
         </Container>
       </div>
     </footer>

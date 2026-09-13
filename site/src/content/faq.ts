@@ -27,7 +27,7 @@ export const faq: FaqItem[] = [
   {
     question: "Can you help me get more reviews and calls after launch?",
     answer:
-      "Yes. That is what the monthly plans are for: Google Business Profile optimisation, review automation, lead follow-up and monthly reporting.",
+      "Yes. After launch we offer optional monthly plans that cover hosting, Google Business Profile optimization, analytics and a monthly report on calls and leads.",
   },
   {
     question: "What does it cost?",

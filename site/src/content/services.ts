@@ -36,7 +36,7 @@ export const services: Service[] = [
     includes: [
       "Keyword research for your services and area",
       "Dedicated service and city pages",
-      "On-page optimisation and schema",
+      "On-page optimization and schema",
       "Search Console setup and monitoring",
       "Monthly ranking report",
     ],
@@ -45,9 +45,9 @@ export const services: Service[] = [
     slug: "google-business",
     name: "Google Business Profile",
     summary:
-      "Optimise the listing that shows up in the map results, where most local calls come from.",
+      "Optimize the listing that shows up in the map results, where most local calls come from.",
     description:
-      "Your Google Business Profile often gets more views than your website. We complete and optimise it, add services and photos, publish regular posts, and keep it accurate so it earns the calls it should.",
+      "Your Google Business Profile often gets more views than your website. We complete and optimize it, add services and photos, publish regular posts, and keep it accurate so it earns the calls it should.",
     includes: [
       "Full profile audit and cleanup",
       "Service and product listings",
