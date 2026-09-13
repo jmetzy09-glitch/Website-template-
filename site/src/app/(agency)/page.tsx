@@ -6,11 +6,12 @@ import { testimonials } from "@/content/testimonials";
 import { pricingTiers } from "@/content/pricing";
 import { faq } from "@/content/faq";
 
-import { HeroSplit } from "@/components/sections/HeroSplit";
+import { HeroShowcase } from "@/components/sections/HeroShowcase";
+import { CredibilityStrip } from "@/components/sections/CredibilityStrip";
 import { ValueChecklist } from "@/components/sections/ValueChecklist";
+import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { StepsList } from "@/components/sections/StepsList";
-import { ProjectsGrid } from "@/components/sections/ProjectsGrid";
 import { FeatureList } from "@/components/sections/FeatureList";
 import { ReviewsCards } from "@/components/sections/ReviewsCards";
 import { PricingTiers } from "@/components/sections/PricingTiers";
@@ -22,20 +23,21 @@ function renderSection(section: HomeSection, index: number) {
   const key = `${section.type}-${index}`;
 
   switch (section.type) {
-    case "hero":
+    case "heroShowcase":
       return (
-        <HeroSplit
+        <HeroShowcase
           key={key}
           eyebrow={section.eyebrow}
           headline={section.headline}
           subheadline={section.subheadline}
           primaryCTA={conversion.primaryCTA}
           secondaryCTA={conversion.secondaryCTA}
-          phone={business.phone}
-          phoneHref={phoneHref}
-          panel={section.panel}
+          proofPoints={section.proofPoints}
+          mockup={section.mockup}
         />
       );
+    case "credibility":
+      return <CredibilityStrip key={key} statement={section.statement} items={section.items} />;
     case "valueChecklist":
       return (
         <ValueChecklist
@@ -44,61 +46,34 @@ function renderSection(section: HomeSection, index: number) {
           heading={section.heading}
           intro={section.intro}
           items={section.items}
+          cta={section.withCTA ? conversion.primaryCTA : undefined}
+          tone={section.tone}
+        />
+      );
+    case "showcase":
+      if (!features.gallery) return null;
+      return (
+        <ProjectShowcase
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          projects={projects}
+          ctaLabel={section.ctaLabel}
+          inProgressLabel={section.inProgressLabel}
         />
       );
     case "services":
-      return (
-        <ServicesGrid
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          intro={section.intro}
-          services={services}
-        />
-      );
+      return <ServicesGrid key={key} eyebrow={section.eyebrow} heading={section.heading} intro={section.intro} services={services} />;
     case "steps":
-      return (
-        <StepsList
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          intro={section.intro}
-          steps={section.steps}
-        />
-      );
-    case "projects":
-      if (!features.gallery) return null;
-      return (
-        <ProjectsGrid
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          intro={section.intro}
-          ctaLabel={section.ctaLabel}
-          projects={projects}
-        />
-      );
+      return <StepsList key={key} eyebrow={section.eyebrow} heading={section.heading} intro={section.intro} steps={section.steps} />;
     case "featureList":
       return (
-        <FeatureList
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          subheading={section.subheading}
-          items={section.items}
-        />
+        <FeatureList key={key} eyebrow={section.eyebrow} heading={section.heading} subheading={section.subheading} items={section.items} />
       );
     case "testimonials":
       if (!features.reviews) return null;
-      return (
-        <ReviewsCards
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          intro={section.intro}
-          testimonials={testimonials}
-        />
-      );
+      return <ReviewsCards key={key} eyebrow={section.eyebrow} heading={section.heading} intro={section.intro} testimonials={testimonials} />;
     case "pricing":
       if (!features.pricing) return null;
       return (
@@ -113,15 +88,7 @@ function renderSection(section: HomeSection, index: number) {
         />
       );
     case "faq":
-      return (
-        <FaqList
-          key={key}
-          eyebrow={section.eyebrow}
-          heading={section.heading}
-          intro={section.intro}
-          items={faq}
-        />
-      );
+      return <FaqList key={key} eyebrow={section.eyebrow} heading={section.heading} intro={section.intro} items={faq} />;
     case "cta":
       return (
         <CtaBanner

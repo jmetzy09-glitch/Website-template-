@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { Container } from "./Container";
 
-type Tone = "paper" | "surface" | "accent" | "ink";
+type Tone = "paper" | "surface" | "sand" | "accent" | "ink";
 
 interface SectionProps {
   children: ReactNode;
@@ -15,6 +15,7 @@ interface SectionProps {
 const toneClass: Record<Tone, string> = {
   paper: "bg-paper text-ink",
   surface: "bg-surface text-ink",
+  sand: "bg-sand text-ink",
   accent: "bg-accent text-white",
   ink: "bg-ink text-stone-200",
 };
@@ -41,9 +42,11 @@ interface SectionHeadingProps {
   className?: string;
   /** Use on dark or accent backgrounds. */
   inverted?: boolean;
+  /** Render as the page h1 when this section opens the page. */
+  as?: "h1" | "h2";
 }
 
-export function SectionHeading({ id, eyebrow, heading, intro, className, inverted }: SectionHeadingProps) {
+export function SectionHeading({ id, eyebrow, heading, intro, className, inverted, as: Tag = "h2" }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-2xl", className)}>
       {eyebrow ? (
@@ -51,9 +54,9 @@ export function SectionHeading({ id, eyebrow, heading, intro, className, inverte
           {eyebrow}
         </p>
       ) : null}
-      <h2 id={id} className="font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+      <Tag id={id} className="font-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
         {heading}
-      </h2>
+      </Tag>
       {intro ? <p className={cn("mt-4 text-lg leading-relaxed", inverted ? "text-white/85" : "text-ink-muted")}>{intro}</p> : null}
     </div>
   );

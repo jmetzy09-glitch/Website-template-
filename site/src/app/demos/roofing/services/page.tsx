@@ -21,6 +21,7 @@ export default function RoofingServicesPage() {
           eyebrow="Services"
           heading="Roofing services for homes and businesses"
           intro="One local crew for everything above your ceiling. Every job starts with a free inspection and a written scope."
+          as="h1"
         />
         <ul className="mt-8 flex flex-wrap gap-2">
           {roofingServices.map((s) => (

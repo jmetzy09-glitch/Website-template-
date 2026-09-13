@@ -13,12 +13,13 @@ interface ProjectsGridProps {
   projects: Project[];
   tone?: "paper" | "surface";
   columns?: 2 | 3;
+  headingLevel?: "h1" | "h2";
 }
 
-export function ProjectsGrid({ eyebrow, heading, intro, ctaLabel, projects, tone = "surface", columns = 2 }: ProjectsGridProps) {
+export function ProjectsGrid({ eyebrow, heading, intro, ctaLabel, projects, tone = "surface", columns = 2, headingLevel }: ProjectsGridProps) {
   return (
     <Section labelledBy="projects-heading" tone={tone}>
-      <SectionHeading id="projects-heading" eyebrow={eyebrow} heading={heading} intro={intro} />
+      <SectionHeading id="projects-heading" eyebrow={eyebrow} heading={heading} intro={intro} as={headingLevel} />
       <ul className={columns === 3 ? "mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3" : "mt-12 grid gap-8 sm:grid-cols-2"}>
         {projects.map((project) => {
           const body = (

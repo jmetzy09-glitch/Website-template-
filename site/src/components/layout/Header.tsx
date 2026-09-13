@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { CallToAction, NavItem } from "@/content/site.config";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
@@ -15,9 +16,11 @@ interface HeaderProps {
   /** Where the brand link goes. Demo sites live under a prefix. */
   homeHref?: string;
   tone?: "light" | "dark";
+  /** Replaces the plain-text business name, e.g. a wordmark or logo. */
+  brand?: ReactNode;
 }
 
-export function Header({ businessName, phone, phoneHref, nav, primaryCTA, homeHref = "/", tone = "light" }: HeaderProps) {
+export function Header({ businessName, phone, phoneHref, nav, primaryCTA, homeHref = "/", tone = "light", brand }: HeaderProps) {
   const dark = tone === "dark";
   return (
     <header
@@ -38,7 +41,7 @@ export function Header({ businessName, phone, phoneHref, nav, primaryCTA, homeHr
           aria-label={`${businessName} home`}
           className={cn("whitespace-nowrap font-heading text-lg font-bold tracking-tight lg:text-xl", dark ? "text-white" : "text-ink")}
         >
-          {businessName}
+          {brand ?? businessName}
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">

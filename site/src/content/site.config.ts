@@ -135,7 +135,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   seo: {
-    siteUrl: "https://example.com", // TODO(owner): real domain
+    siteUrl: "https://website-template-eosin-sigma.vercel.app", // TODO(owner): replace with the real domain when purchased
     defaultTitle: "Websites for Local Businesses in San Angelo, TX",
     defaultDescription:
       "Fast, professional websites that turn Google searches into phone calls, estimate requests and customers for local service businesses.",

@@ -25,6 +25,7 @@ export default function RoofingAboutPage() {
         image={a.intro.image}
         tone="surface"
         reverse
+        headingLevel="h1"
       />
       <FeatureList eyebrow={a.values.eyebrow} heading={a.values.heading} items={a.values.items} />
       <ReviewsCards eyebrow="Reviews" heading="What your neighbors say" testimonials={roofingTestimonials} />

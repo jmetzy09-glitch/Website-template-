@@ -14,6 +14,7 @@
   --color-accent: #1e40af;
   --color-accent-strong: #1e3a8a;
   --color-accent-soft: #dbeafe;
+  --color-sand: #f1ece2;
 
   --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-sans:
@@ -33,6 +34,7 @@
   --color-accent: #c2410c;
   --color-accent-strong: #9a3412;
   --color-accent-soft: #fed7aa;
+  --color-sand: #efe6d8;
   --font-heading: var(--font-barlow), "Arial Narrow", ui-sans-serif, sans-serif;
 }
 .theme-roofing h1,
@@ -42,6 +44,24 @@
 }
 .theme-roofing h3 {
   letter-spacing: 0.01em;
+}
+
+/* Restrained entrance motion for hero elements. Never starts fully transparent, so LCP is not delayed. Disabled under reduced motion below. */
+@keyframes rise {
+  from {
+    opacity: 0.6;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.rise-delay {
+  animation-delay: 0.12s;
 }
 
 @layer base {

@@ -9,12 +9,23 @@
 
 export type HomeSection =
   | {
-      type: "hero";
+      type: "heroShowcase";
       eyebrow?: string;
       headline: string;
       subheadline: string;
-      /** Optional side panel, e.g. what a free review covers. */
-      panel?: { heading: string; items: string[]; note?: string };
+      proofPoints?: string[];
+      mockup: {
+        desktop: { src: string; alt: string; width: number; height: number };
+        phone: { src: string; alt: string; width: number; height: number };
+        url?: string;
+        href?: string;
+        caption?: string;
+      };
+    }
+  | {
+      type: "credibility";
+      statement: string;
+      items: string[];
     }
   | {
       type: "valueChecklist";
@@ -22,6 +33,16 @@ export type HomeSection =
       heading: string;
       intro?: string;
       items: string[];
+      withCTA?: boolean;
+      tone?: "paper" | "surface" | "sand";
+    }
+  | {
+      type: "showcase";
+      eyebrow?: string;
+      heading: string;
+      intro?: string;
+      ctaLabel: string;
+      inProgressLabel?: string;
     }
   | {
       type: "services";
@@ -35,13 +56,6 @@ export type HomeSection =
       heading: string;
       intro?: string;
       steps: { title: string; description: string }[];
-    }
-  | {
-      type: "projects";
-      eyebrow?: string;
-      heading: string;
-      intro?: string;
-      ctaLabel: string;
     }
   | {
       type: "featureList";
@@ -77,43 +91,63 @@ export type HomeSection =
 
 export const homeSections: HomeSection[] = [
   {
-    type: "hero",
-    eyebrow: "Web design and lead systems for local businesses",
-    headline: "Websites Built to Bring Local Businesses More Customers",
+    type: "heroShowcase",
+    eyebrow: "Web design for local businesses",
+    headline: "Websites Built to Bring Local Businesses More Customers.",
     subheadline:
-      "We design fast, professional websites that turn Google searches and website visitors into phone calls, estimate requests and customers.",
-    panel: {
-      heading: "Your free website review covers",
-      items: [
-        "How your site looks and works on a phone",
-        "Whether visitors can call or request an estimate in one tap",
-        "How you show up in Google for your services and area",
-        "Page speed and the fixes that matter",
-      ],
-      note: "Takes about 15 minutes. You get a short written summary either way.",
+      "Fast, professional websites designed to turn Google searches and website visitors into phone calls, estimate requests and customers.",
+    proofPoints: ["Mobile-first", "SEO-ready", "Lead tracking", "Built in West Texas"],
+    mockup: {
+      desktop: {
+        src: "/images/examples/roofing-demo.jpg",
+        alt: "Desktop view of the West Texas Roofing Co. demo website homepage",
+        width: 1600,
+        height: 1000,
+      },
+      phone: {
+        src: "/images/examples/roofing-demo-phone.jpg",
+        alt: "Phone view of the West Texas Roofing Co. demo website",
+        width: 780,
+        height: 1560,
+      },
+      url: "westtexasroofing.example",
+      href: "/demos/roofing",
+      caption: "Shown: our roofing demo site. Tap to open it.",
     },
   },
   {
+    type: "credibility",
+    statement: "Built for local businesses across West Texas",
+    items: ["Web Design", "Local SEO", "Lead Generation", "Business Automation"],
+  },
+  {
     type: "valueChecklist",
-    eyebrow: "What a website is for",
-    heading: "Your website should do more than look good.",
-    intro:
-      "For a local service business the website has one job: turn the people who find you into people who call you.",
+    eyebrow: "Free website review",
+    heading: "Not sure if your current website is costing you customers?",
+    intro: "We'll spend 15 minutes on your site and send you a short written summary. Here is what we look at.",
     items: [
-      "Generate phone calls",
-      "Capture estimate requests",
-      "Build trust before the first call",
-      "Rank for local searches",
-      "Work perfectly on phones",
-      "Track where every lead comes from",
+      "How your site looks and works on a phone",
+      "Whether visitors can call or request an estimate in one tap",
+      "How you show up in Google for your services and area",
+      "Page speed and the fixes that matter",
     ],
+    withCTA: true,
+    tone: "sand",
+  },
+  {
+    type: "showcase",
+    eyebrow: "Our work",
+    heading: "See what a site built this way looks like",
+    intro:
+      "Demo sites for the kinds of businesses we build for. Every one is mobile-first, fast, and built around a single clear action.",
+    ctaLabel: "View live demo",
+    inProgressLabel: "In progress:",
   },
   {
     type: "services",
     eyebrow: "Services",
     heading: "What we do",
-    intro:
-      "The website gets you found. Everything connected to it turns visitors into customers.",
+    intro: "The website gets you found. Everything connected to it turns visitors into customers.",
   },
   {
     type: "steps",
@@ -123,13 +157,11 @@ export const homeSections: HomeSection[] = [
     steps: [
       {
         title: "We learn your business",
-        description:
-          "A short conversation about your services, your customers and what a good lead looks like.",
+        description: "A short conversation about your services, your customers and what a good lead looks like.",
       },
       {
         title: "We design your website",
-        description:
-          "A homepage concept built around your business, not a generic template.",
+        description: "A homepage concept built around your business, not a generic template.",
       },
       {
         title: "You review the concept",
@@ -137,22 +169,13 @@ export const homeSections: HomeSection[] = [
       },
       {
         title: "We build and launch it",
-        description:
-          "Every page, form and phone link tested on a real phone before it goes live.",
+        description: "Every page, form and phone link tested on a real phone before it goes live.",
       },
       {
         title: "We help you generate leads",
-        description:
-          "Optional monthly plans for hosting, Google Business Profile, analytics and reporting.",
+        description: "Optional monthly plans for hosting, Google Business Profile, analytics and reporting.",
       },
     ],
-  },
-  {
-    type: "projects",
-    eyebrow: "Examples",
-    heading: "Demo websites",
-    intro: "See what a site built this way looks like for businesses like yours.",
-    ctaLabel: "View demo",
   },
   {
     type: "featureList",
@@ -160,26 +183,11 @@ export const homeSections: HomeSection[] = [
     heading: "Built for local businesses. Not generic templates.",
     items: [
       { title: "Fast", description: "Built for fast loading and excellent mobile performance." },
-      {
-        title: "Mobile-first",
-        description: "Designed on a phone screen first, because that is where your customers are.",
-      },
-      {
-        title: "SEO-ready",
-        description: "Structured so Google understands what you do and where you do it.",
-      },
-      {
-        title: "Conversion focused",
-        description: "Every page has one clear next step: call or request an estimate.",
-      },
-      {
-        title: "Simple pricing",
-        description: "One-time website prices. Monthly plans only if you want them.",
-      },
-      {
-        title: "Local support",
-        description: "Based in San Angelo. We answer the phone.",
-      },
+      { title: "Mobile-first", description: "Designed on a phone screen first, because that is where your customers are." },
+      { title: "SEO-ready", description: "Structured so Google understands what you do and where you do it." },
+      { title: "Conversion focused", description: "Every page has one clear next step: call or request an estimate." },
+      { title: "Simple pricing", description: "One-time website prices. Monthly plans only if you want them." },
+      { title: "Local support", description: "Based in San Angelo. We answer the phone." },
     ],
   },
   {
@@ -191,7 +199,8 @@ export const homeSections: HomeSection[] = [
     type: "pricing",
     eyebrow: "Pricing",
     heading: "Clear one-time prices. No surprises.",
-    intro: "Every package includes design, build, launch and a walkthrough. Optional monthly plans for hosting, Google Business Profile and reporting are available after launch.",
+    intro:
+      "Every package includes design, build, launch and a walkthrough. Optional monthly plans for hosting, Google Business Profile and reporting are available after launch.",
     footnote: "Prices are starting points. Larger sites and custom integrations are quoted after the free review.",
   },
   {

@@ -27,6 +27,7 @@ export default function RoofingProjectsPage() {
           image: p.image.src,
           imageAlt: p.image.alt,
         }))}
+        headingLevel="h1"
       />
       <CtaBanner
         heading="Want your roof on this page?"

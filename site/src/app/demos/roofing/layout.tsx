@@ -28,6 +28,15 @@ export const metadata: Metadata = {
     template: `%s | ${roofingConfig.business.name}`,
   },
   description: roofingConfig.seo.defaultDescription,
+  openGraph: {
+    type: "website",
+    siteName: roofingConfig.business.name,
+    title: `${roofingConfig.seo.defaultTitle} | ${roofingConfig.business.name}`,
+    description: roofingConfig.seo.defaultDescription,
+    locale: "en_US",
+    images: [{ url: "/images/demos/roofing/hero-carrying-shingles.jpg", width: 2000, height: 1333, alt: "Roofer carrying shingles" }],
+  },
+  twitter: { card: "summary_large_image" },
   // Demo pages should never compete with real sites in search.
   robots: { index: false, follow: false },
 };

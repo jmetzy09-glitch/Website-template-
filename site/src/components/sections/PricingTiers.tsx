@@ -12,12 +12,13 @@ interface PricingTiersProps {
   tiers: PricingTier[];
   cta: CallToAction;
   footnote?: string;
+  headingLevel?: "h1" | "h2";
 }
 
-export function PricingTiers({ eyebrow, heading, intro, tiers, cta, footnote }: PricingTiersProps) {
+export function PricingTiers({ eyebrow, heading, intro, tiers, cta, footnote, headingLevel }: PricingTiersProps) {
   return (
     <Section labelledBy="pricing-heading" tone="surface">
-      <SectionHeading id="pricing-heading" eyebrow={eyebrow} heading={heading} intro={intro} />
+      <SectionHeading id="pricing-heading" eyebrow={eyebrow} heading={heading} intro={intro} as={headingLevel} />
       <ul className="mt-12 grid gap-6 lg:grid-cols-3">
         {tiers.map((tier) => (
           <li

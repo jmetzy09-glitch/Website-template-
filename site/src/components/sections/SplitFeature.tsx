@@ -16,6 +16,7 @@ interface SplitFeatureProps {
   /** Put the image on the right instead of the left. */
   reverse?: boolean;
   tone?: "paper" | "surface";
+  headingLevel?: "h1" | "h2";
 }
 
 /** Photo on one side, copy on the other. Reusable for any feature, service or story block. */
@@ -29,6 +30,7 @@ export function SplitFeature({
   cta,
   reverse = false,
   tone = "paper",
+  headingLevel,
 }: SplitFeatureProps) {
   const paragraphs = Array.isArray(body) ? body : [body];
   return (
@@ -43,7 +45,7 @@ export function SplitFeature({
         <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
       </div>
       <div className={cn("lg:col-span-6", reverse && "lg:order-1")}>
-        <SectionHeading id={`${id}-heading`} eyebrow={eyebrow} heading={heading} />
+        <SectionHeading id={`${id}-heading`} eyebrow={eyebrow} heading={heading} as={headingLevel} />
         <div className="mt-5 space-y-4 text-lg leading-relaxed text-ink-muted">
           {paragraphs.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>

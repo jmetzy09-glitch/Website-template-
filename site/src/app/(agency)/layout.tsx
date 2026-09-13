@@ -5,6 +5,7 @@ import { siteConfig, phoneHref } from "@/content/site.config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCallBar } from "@/components/layout/StickyCallBar";
+import { Wordmark } from "@/components/ui/Wordmark";
 import { cn } from "@/lib/cn";
 
 /** Heading font only. Body text uses the system stack (see globals.css). */
@@ -22,6 +23,15 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.business.name}`,
   },
   description: siteConfig.seo.defaultDescription,
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.business.name,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
+    locale: "en_US",
+    images: [{ url: "/images/examples/roofing-demo.jpg", width: 1600, height: 1000, alt: "Example website built by Concho Web Co." }],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           phoneHref={phoneHref}
           nav={nav}
           primaryCTA={conversion.primaryCTA}
+          brand={<Wordmark primary="CONCHO" secondary="WEB CO." />}
         />
         <main id="main" className="flex-1">
           {children}

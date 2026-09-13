@@ -13,6 +13,8 @@ export interface Project {
   imageAlt?: string;
   /** External demo URL or internal case-study route. */
   href?: string;
+  /** Short capability tags shown on showcases, e.g. "Mobile-first". */
+  tags?: string[];
 }
 
 export const projects: Project[] = [
@@ -25,6 +27,7 @@ export const projects: Project[] = [
     image: "/images/examples/roofing-demo.jpg",
     imageAlt: "Homepage of the West Texas Roofing Co. demo website",
     href: "/demos/roofing",
+    tags: ["Mobile-first", "Local SEO", "Lead capture", "Insurance and financing pages"],
   },
   {
     slug: "hvac-demo",

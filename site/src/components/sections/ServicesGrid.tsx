@@ -9,17 +9,18 @@ interface ServicesGridProps {
   intro?: string;
   services: Service[];
   allServicesHref?: string;
+  headingLevel?: "h1" | "h2";
 }
 
 /**
  * Editorial list layout: heading column on the left, divided list of services
  * on the right. Deliberately not a card grid.
  */
-export function ServicesGrid({ eyebrow, heading, intro, services, allServicesHref = "/services" }: ServicesGridProps) {
+export function ServicesGrid({ eyebrow, heading, intro, services, allServicesHref = "/services", headingLevel }: ServicesGridProps) {
   return (
     <Section labelledBy="services-heading" tone="surface" containerClassName="grid gap-10 lg:grid-cols-12">
       <div className="lg:col-span-4">
-        <SectionHeading id="services-heading" eyebrow={eyebrow} heading={heading} intro={intro} />
+        <SectionHeading id="services-heading" eyebrow={eyebrow} heading={heading} intro={intro} as={headingLevel} />
         <Link
           href={allServicesHref}
           className="mt-6 inline-flex items-center gap-2 font-semibold text-accent underline-offset-4 hover:underline"
