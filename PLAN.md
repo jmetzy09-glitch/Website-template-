@@ -121,8 +121,15 @@ Later: the same route fans out to SMS auto-reply, CRM, and missed-call text-back
 
 Placeholders are used until you decide. All four live in `site.config.ts` and `pricing.ts` only.
 
-## 9b. First milestone
-Scaffold runs and a plain, unstyled homepage renders every section from typed content and config. No styling until that works.
+## 9b. Status (updated 2026-09-12)
+Done: scaffold, design pass, all agency pages, lead form + /api/lead (Resend when configured), sitemap/robots, and the first client demo at /demos/roofing (own root layout, config, content and theme; shared components). Homepage leads with a browser/phone mockup of the demo.
+
+Engine notes learned from the demo:
+- A client site is a second root layout under `src/app/<site>/` plus `src/content/demos/<site>/` and a `.theme-<site>` token block in globals.css. Components are never edited for a client.
+- Section components accept `headingLevel="h1"` when they open a page.
+- Demo sites are noindex and excluded from the sitemap.
+
+Still open: real phone/email/domain, final logo file, Resend keys in Vercel, Lighthouse pass, HVAC/plumbing/landscaping demos (only after talking to prospects).
 
 ## 10. Not in v1
 CRM, AI assistant, review automation, owner dashboard, SMS, blog. The API route is designed so these plug in later without a rewrite.
