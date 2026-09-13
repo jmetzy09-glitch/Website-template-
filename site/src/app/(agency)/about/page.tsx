@@ -30,6 +30,7 @@ export default function AboutPage() {
         cta={conversion.primaryCTA}
         phone={business.phone}
         phoneHref={phoneHref}
+        tone="ink"
       />
     </>
   );

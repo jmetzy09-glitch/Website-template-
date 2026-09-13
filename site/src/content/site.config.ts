@@ -106,9 +106,9 @@ export const siteConfig: SiteConfig = {
   },
 
   brand: {
-    logo: "/images/logo.svg", // TODO(owner): real logo
-    accent: "#1d4ed8", // TODO(owner): brand accent colour
-    headingFont: "Inter", // TODO(owner): heading font
+    logo: "/icon.svg",
+    accent: "#2563eb",
+    headingFont: "Manrope",
   },
 
   features: {

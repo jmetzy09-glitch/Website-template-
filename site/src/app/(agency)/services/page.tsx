@@ -27,6 +27,7 @@ export default function ServicesPage() {
         cta={conversion.primaryCTA}
         phone={business.phone}
         phoneHref={phoneHref}
+        tone="ink"
       />
     </>
   );

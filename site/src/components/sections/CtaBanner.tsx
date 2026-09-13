@@ -9,13 +9,15 @@ interface CtaBannerProps {
   cta: CallToAction;
   phone: string;
   phoneHref: string;
+  tone?: "accent" | "ink";
 }
 
-export function CtaBanner({ heading, body, cta, phone, phoneHref }: CtaBannerProps) {
+export function CtaBanner({ heading, body, cta, phone, phoneHref, tone = "accent" }: CtaBannerProps) {
   return (
     <Section
       labelledBy="cta-heading"
-      tone="accent"
+      tone={tone}
+      className={tone === "ink" ? "bg-dots-dark text-white" : undefined}
       containerClassName="grid gap-8 lg:grid-cols-12 lg:items-center"
     >
       <div className="lg:col-span-8">
@@ -25,7 +27,7 @@ export function CtaBanner({ heading, body, cta, phone, phoneHref }: CtaBannerPro
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/85">{body}</p>
       </div>
       <div className="flex flex-col gap-3 lg:col-span-4 lg:items-end">
-        <ButtonLink href={cta.href} variant="inverted" size="lg" className="w-full sm:w-auto">
+        <ButtonLink href={cta.href} variant={tone === "ink" ? "primary" : "inverted"} size="lg" className="w-full sm:w-auto">
           {cta.label}
         </ButtonLink>
         <a

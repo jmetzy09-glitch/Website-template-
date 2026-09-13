@@ -50,7 +50,8 @@ export function SectionHeading({ id, eyebrow, heading, intro, className, inverte
   return (
     <div className={cn("max-w-2xl", className)}>
       {eyebrow ? (
-        <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wider", inverted ? "text-white/80" : "text-accent")}>
+        <p className={cn("mb-3 flex items-center gap-2.5 text-sm font-semibold uppercase tracking-wider", inverted ? "text-white/80" : "text-accent")}>
+          <span aria-hidden="true" className={cn("h-0.5 w-5 rounded-full", inverted ? "bg-white/70" : "bg-accent")} />
           {eyebrow}
         </p>
       ) : null}

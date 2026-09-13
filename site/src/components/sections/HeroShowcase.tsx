@@ -29,7 +29,7 @@ interface HeroShowcaseProps {
  */
 export function HeroShowcase({ eyebrow, headline, subheadline, primaryCTA, secondaryCTA, proofPoints, mockup }: HeroShowcaseProps) {
   const visual = (
-    <div className="relative">
+    <div className="relative rounded-xl bg-sand p-3 sm:p-5">
       <BrowserFrame
         src={mockup.desktop.src}
         alt={mockup.desktop.alt}
@@ -46,13 +46,14 @@ export function HeroShowcase({ eyebrow, headline, subheadline, primaryCTA, secon
         height={mockup.phone.height}
         priority
         sizes="(min-width: 1024px) 14vw, 28vw"
-        className="absolute -bottom-6 right-3 w-[27%] min-w-[104px] sm:right-6"
+        className="absolute -bottom-6 right-1 w-[27%] min-w-[104px] sm:right-3"
       />
     </div>
   );
 
   return (
-    <section aria-labelledby="hero-heading" className="overflow-hidden border-b border-line bg-surface">
+    <section aria-labelledby="hero-heading" className="relative overflow-hidden border-b border-line bg-surface">
+      <div aria-hidden="true" className="bg-dots fade-bottom absolute inset-0 -z-10 opacity-70" />
       <Container className="grid items-center gap-14 py-16 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-24">
         <div className="rise lg:col-span-6">
           {eyebrow ? <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-accent">{eyebrow}</p> : null}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { NavItem } from "@/content/site.config";
 import { Container } from "@/components/ui/Container";
 
@@ -17,6 +18,8 @@ interface FooterProps {
   legalLinks?: NavItem[];
   /** Small print under the copyright, e.g. a demo disclaimer. */
   note?: string;
+  /** Logo lockup to show instead of the plain business name. */
+  brand?: ReactNode;
 }
 
 export function Footer({
@@ -32,6 +35,7 @@ export function Footer({
   nav,
   legalLinks = [],
   note,
+  brand,
 }: FooterProps) {
   const year = new Date().getFullYear();
   const links = [...nav, ...legalLinks];
@@ -39,8 +43,8 @@ export function Footer({
     <footer className="bg-ink text-stone-300">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2 lg:col-span-2">
-          <p className="font-heading text-xl font-bold text-white">{businessName}</p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-stone-400">{tagline}</p>
+          {brand ? <div>{brand}</div> : <p className="font-heading text-xl font-bold text-white">{businessName}</p>}
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-stone-400">{tagline}</p>
           <p className="mt-6 text-sm">
             <a href={phoneHref} className="font-semibold text-white hover:underline">
               {phone}

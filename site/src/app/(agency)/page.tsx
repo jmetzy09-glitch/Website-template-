@@ -98,6 +98,7 @@ function renderSection(section: HomeSection, index: number) {
           cta={conversion.primaryCTA}
           phone={business.phone}
           phoneHref={phoneHref}
+          tone="ink"
         />
       );
   }

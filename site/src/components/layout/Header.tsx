@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import type { CallToAction, NavItem } from "@/content/site.config";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
-import { PhoneIcon } from "@/components/ui/Icons";
+import { ArrowRightIcon, PhoneIcon } from "@/components/ui/Icons";
 import { cn } from "@/lib/cn";
 import { MobileNav } from "./MobileNav";
 
@@ -76,7 +76,8 @@ export function Header({ businessName, phone, phoneHref, nav, primaryCTA, homeHr
           </a>
           <div className="hidden sm:block">
             <ButtonLink href={primaryCTA.href} variant="primary">
-              {primaryCTA.shortLabel && primaryCTA.label.length > 24 ? primaryCTA.shortLabel : primaryCTA.label}
+              {primaryCTA.shortLabel && primaryCTA.label.length > 28 ? primaryCTA.shortLabel : primaryCTA.label}
+              <ArrowRightIcon width={16} height={16} />
             </ButtonLink>
           </div>
           <MobileNav nav={nav} phone={phone} phoneHref={phoneHref} primaryCTA={primaryCTA} tone={tone} />

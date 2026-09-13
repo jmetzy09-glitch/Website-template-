@@ -81,6 +81,7 @@ export default async function ServiceDetailPage({ params }: PageProps<"/services
         cta={conversion.primaryCTA}
         phone={business.phone}
         phoneHref={phoneHref}
+        tone="ink"
       />
     </>
   );

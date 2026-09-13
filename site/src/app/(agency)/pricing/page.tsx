@@ -31,6 +31,7 @@ export default function PricingPage() {
         cta={conversion.primaryCTA}
         phone={business.phone}
         phoneHref={phoneHref}
+        tone="ink"
       />
     </>
   );

@@ -29,6 +29,7 @@ export default function ExamplesPage() {
         cta={conversion.primaryCTA}
         phone={business.phone}
         phoneHref={phoneHref}
+        tone="ink"
       />
     </>
   );

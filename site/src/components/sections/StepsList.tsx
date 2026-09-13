@@ -18,11 +18,14 @@ export function StepsList({ eyebrow, heading, intro, steps }: StepsListProps) {
       <SectionHeading id="steps-heading" eyebrow={eyebrow} heading={heading} intro={intro} />
       <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
         {steps.map((step, i) => (
-          <li key={step.title} className="border-t-2 border-accent pt-4">
-            <p className="font-heading text-sm font-semibold text-accent" aria-hidden="true">
-              Step {i + 1}
+          <li key={step.title} className="border-t border-line pt-5">
+            <p
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-ink font-heading text-sm font-bold text-white"
+              aria-hidden="true"
+            >
+              {i + 1}
             </p>
-            <h3 className="mt-2 font-heading text-lg font-bold text-ink">
+            <h3 className="mt-4 font-heading text-lg font-bold text-ink">
               <span className="sr-only">Step {i + 1}: </span>
               {step.title}
             </h3>

@@ -6,17 +6,18 @@
  * One accent colour, warm neutrals, no gradients.
  */
 @theme {
-  --color-ink: #1c1917;
-  --color-ink-muted: #57534e;
-  --color-paper: #fafaf9;
+  --color-ink: #0f1b2d;
+  --color-ink-muted: #4b5766;
+  --color-paper: #f7f7f4;
   --color-surface: #ffffff;
-  --color-line: #e7e5e4;
-  --color-accent: #1e40af;
-  --color-accent-strong: #1e3a8a;
+  --color-line: #e2e5ea;
+  --color-accent: #2563eb;
+  --color-accent-strong: #1d4ed8;
   --color-accent-soft: #dbeafe;
-  --color-sand: #f1ece2;
+  --color-sand: #efe8da;
 
-  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-brand: var(--font-orbitron), var(--font-manrope), ui-sans-serif, sans-serif;
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -44,6 +45,19 @@
 }
 .theme-roofing h3 {
   letter-spacing: 0.01em;
+}
+
+/* Brand texture: a faint dot grid that echoes the circuit nodes in the logo. */
+.bg-dots {
+  background-image: radial-gradient(circle, var(--color-line) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.bg-dots-dark {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.09) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.fade-bottom {
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
 /* Restrained entrance motion for hero elements. Never starts fully transparent, so LCP is not delayed. Disabled under reduced motion below. */
