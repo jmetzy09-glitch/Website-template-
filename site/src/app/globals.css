@@ -47,6 +47,24 @@
   letter-spacing: 0.01em;
 }
 
+.theme-landscaping {
+  --color-ink: #1f2a20;
+  --color-ink-muted: #55604f;
+  --color-paper: #f7f6f0;
+  --color-surface: #ffffff;
+  --color-line: #e3e2d8;
+  --color-accent: #2f7a3e;
+  --color-accent-strong: #256331;
+  --color-accent-soft: #d9efd9;
+  --color-sand: #efe9da;
+  --font-heading: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+.theme-landscaping h1,
+.theme-landscaping h2,
+.theme-landscaping h3 {
+  letter-spacing: -0.01em;
+}
+
 /* Brand texture: a faint dot grid that echoes the circuit nodes in the logo. */
 .bg-dots {
   background-image: radial-gradient(circle, var(--color-line) 1.2px, transparent 1.2px);
@@ -60,15 +78,14 @@
   mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
-/* Sections rise in as they enter the viewport. Scroll-driven, CSS only; browsers
-   without support simply show the content. Off under reduced motion. */
+/* Sections rise in as they enter the viewport. Transform only (no opacity) so
+   contrast audits and screen readers see final colours. Scroll-driven, CSS only;
+   browsers without support simply show the content. Off under reduced motion. */
 @keyframes reveal-in {
   from {
-    opacity: 0.25;
     transform: translateY(22px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }

@@ -45,9 +45,13 @@ export const projects: Project[] = [
   },
   {
     slug: "landscaping-demo",
-    title: "Landscaping Company",
-    category: "Home Services",
+    title: "Concho Valley Lawn & Landscape",
+    category: "Landscaping and lawn care",
     summary:
-      "Photo-led project gallery, seasonal promotions and a simple quote form.",
+      "A warm, photo-led site with monthly lawn plans, a water-wise xeriscape pitch and a free-consultation form. Same engine as the roofing site, completely different feel.",
+    image: "/images/examples/landscaping-demo.jpg",
+    imageAlt: "Homepage of the Concho Valley Lawn & Landscape demo website",
+    href: "/demos/landscaping",
+    tags: ["Mobile-first", "Monthly plans", "Lead capture", "Photo-led design"],
   },
 ];

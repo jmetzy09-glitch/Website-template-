@@ -13,9 +13,11 @@ interface PricingTiersProps {
   cta: CallToAction;
   footnote?: string;
   headingLevel?: "h1" | "h2";
+  /** Line under each price, e.g. "One-time project price" or "Per month". */
+  priceNote?: string;
 }
 
-export function PricingTiers({ eyebrow, heading, intro, tiers, cta, footnote, headingLevel }: PricingTiersProps) {
+export function PricingTiers({ eyebrow, heading, intro, tiers, cta, footnote, headingLevel, priceNote = "One-time project price" }: PricingTiersProps) {
   return (
     <Section labelledBy="pricing-heading" tone="surface">
       <SectionHeading id="pricing-heading" eyebrow={eyebrow} heading={heading} intro={intro} as={headingLevel} />
@@ -37,7 +39,7 @@ export function PricingTiers({ eyebrow, heading, intro, tiers, cta, footnote, he
               ) : null}
             </div>
             <p className="mt-4 font-heading text-4xl font-bold tracking-tight text-ink">{tier.price}</p>
-            <p className="mt-1 text-sm text-ink-muted">One-time project price</p>
+            <p className="mt-1 text-sm text-ink-muted">{priceNote}</p>
             <p className="mt-4 leading-relaxed text-ink-muted">{tier.summary}</p>
             <ul className="mt-6 flex-1 space-y-3 border-t border-line pt-6">
               {tier.features.map((f) => (

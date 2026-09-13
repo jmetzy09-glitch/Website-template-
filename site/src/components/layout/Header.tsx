@@ -38,8 +38,8 @@ export function Header({ businessName, phone, phoneHref, nav, primaryCTA, homeHr
       <Container className="relative flex min-h-16 items-center justify-between gap-4 lg:min-h-20">
         <Link
           href={homeHref}
-          aria-label={`${businessName} home`}
-          className={cn("whitespace-nowrap font-heading text-lg font-bold tracking-tight lg:text-xl", dark ? "text-white" : "text-ink")}
+          aria-label={brand ? undefined : `${businessName} home`}
+          className={cn("min-w-0 max-w-[62vw] font-heading text-lg font-bold leading-tight tracking-tight sm:max-w-none lg:text-xl", dark ? "text-white" : "text-ink")}
         >
           {brand ?? businessName}
         </Link>
