@@ -121,15 +121,26 @@ Later: the same route fans out to SMS auto-reply, CRM, and missed-call text-back
 
 Placeholders are used until you decide. All four live in `site.config.ts` and `pricing.ts` only.
 
-## 9b. Status (updated 2026-09-12)
-Done: scaffold, design pass, all agency pages, lead form + /api/lead (Resend when configured), sitemap/robots, and the first client demo at /demos/roofing (own root layout, config, content and theme; shared components). Homepage leads with a browser/phone mockup of the demo.
+## 9b. Status (updated 2026-09-13)
+Live: https://website-template-eosin-sigma.vercel.app (auto-deploys from `main` on GitHub).
 
-Engine notes learned from the demo:
-- A client site is a second root layout under `src/app/<site>/` plus `src/content/demos/<site>/` and a `.theme-<site>` token block in globals.css. Components are never edited for a client.
-- Section components accept `headingLevel="h1"` when they open a page.
-- Demo sites are noindex and excluded from the sitemap.
+Done: agency site with all pages, brand identity (SVG logo mark, Orbitron wordmark, Manrope headings, navy/blue/sand), lead form + /api/lead, schema and canonicals, sitemap/robots, and two client demos built from the engine:
+- /demos/roofing — West Texas Roofing Co. (dark, Barlow Condensed, burnt orange)
+- /demos/landscaping — Concho Valley Lawn & Landscape (light, Fraunces serif, green, monthly plans)
 
-Still open: real phone/email/domain, final logo file, Resend keys in Vercel, Lighthouse pass, HVAC/plumbing/landscaping demos (only after talking to prospects).
+Lighthouse mobile (live home): 97 / 96 / 100 / 100. Real phone and email are in `site/src/content/site.config.ts`.
+
+### To resume
+1. Open a terminal in `site/` and run `npm run dev`, then visit http://localhost:3000.
+2. Copy content, not components: a new demo is `src/content/demos/<name>/`, a root layout under `src/app/demos/<name>/`, and a `.theme-<name>` block in `src/app/globals.css`.
+3. `npm run lint && npm run build` before pushing. Pushing to `main` deploys.
+
+### Still open (owner)
+- Add `RESEND_API_KEY` in Vercel (Settings > Environment Variables) so the form emails you. `LEAD_TO_EMAIL` is optional; it defaults to the config email.
+- Read and edit the about page copy in `src/content/pages/about.ts`.
+- Buy a domain, add it in Vercel, and set `seo.siteUrl` in the site config.
+- Decide whether "Concho Web Co." is the final name.
+- Then: approach prospects. Do not build more demos first.
 
 ## 10. Not in v1
 CRM, AI assistant, review automation, owner dashboard, SMS, blog. The API route is designed so these plug in later without a rewrite.
