@@ -26,25 +26,52 @@ function renderSection(section: HomeSection, index: number) {
       return (
         <HeroSplit
           key={key}
+          eyebrow={section.eyebrow}
           headline={section.headline}
           subheadline={section.subheadline}
           primaryCTA={conversion.primaryCTA}
           secondaryCTA={conversion.secondaryCTA}
+          phone={business.phone}
+          phoneHref={phoneHref}
+          panel={section.panel}
         />
       );
     case "valueChecklist":
-      return <ValueChecklist key={key} heading={section.heading} items={section.items} />;
+      return (
+        <ValueChecklist
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          items={section.items}
+        />
+      );
     case "services":
       return (
-        <ServicesGrid key={key} heading={section.heading} intro={section.intro} services={services} />
+        <ServicesGrid
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          services={services}
+        />
       );
     case "steps":
-      return <StepsList key={key} heading={section.heading} steps={section.steps} />;
+      return (
+        <StepsList
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          steps={section.steps}
+        />
+      );
     case "projects":
       if (!features.gallery) return null;
       return (
         <ProjectsGrid
           key={key}
+          eyebrow={section.eyebrow}
           heading={section.heading}
           intro={section.intro}
           ctaLabel={section.ctaLabel}
@@ -55,6 +82,7 @@ function renderSection(section: HomeSection, index: number) {
       return (
         <FeatureList
           key={key}
+          eyebrow={section.eyebrow}
           heading={section.heading}
           subheading={section.subheading}
           items={section.items}
@@ -62,20 +90,38 @@ function renderSection(section: HomeSection, index: number) {
       );
     case "testimonials":
       if (!features.reviews) return null;
-      return <ReviewsCards key={key} heading={section.heading} testimonials={testimonials} />;
+      return (
+        <ReviewsCards
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          testimonials={testimonials}
+        />
+      );
     case "pricing":
       if (!features.pricing) return null;
       return (
         <PricingTiers
           key={key}
+          eyebrow={section.eyebrow}
           heading={section.heading}
           intro={section.intro}
+          footnote={section.footnote}
           tiers={pricingTiers}
           cta={conversion.primaryCTA}
         />
       );
     case "faq":
-      return <FaqList key={key} heading={section.heading} items={faq} />;
+      return (
+        <FaqList
+          key={key}
+          eyebrow={section.eyebrow}
+          heading={section.heading}
+          intro={section.intro}
+          items={faq}
+        />
+      );
     case "cta":
       return (
         <CtaBanner

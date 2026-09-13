@@ -1,22 +1,55 @@
 @import "tailwindcss";
 
 /*
- * Brand tokens. Values are overwritten from site.config.ts once the design
- * pass begins. Until then the site is intentionally unstyled: structure first.
+ * Brand tokens.
+ * Colour values mirror brand.accent in site.config.ts. Change them together.
+ * One accent colour, warm neutrals, no gradients.
  */
-:root {
-  --color-bg: #ffffff;
-  --color-text: #171717;
-  --color-accent: #1d4ed8;
+@theme {
+  --color-ink: #1c1917;
+  --color-ink-muted: #57534e;
+  --color-paper: #fafaf9;
+  --color-surface: #ffffff;
+  --color-line: #e7e5e4;
+  --color-accent: #1e40af;
+  --color-accent-strong: #1e3a8a;
+  --color-accent-soft: #dbeafe;
+
+  --font-heading: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
 }

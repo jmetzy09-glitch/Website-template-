@@ -10,48 +10,64 @@
 export type HomeSection =
   | {
       type: "hero";
+      eyebrow?: string;
       headline: string;
       subheadline: string;
+      /** Optional side panel, e.g. what a free review covers. */
+      panel?: { heading: string; items: string[]; note?: string };
     }
   | {
       type: "valueChecklist";
+      eyebrow?: string;
       heading: string;
+      intro?: string;
       items: string[];
     }
   | {
       type: "services";
+      eyebrow?: string;
       heading: string;
       intro?: string;
     }
   | {
       type: "steps";
+      eyebrow?: string;
       heading: string;
+      intro?: string;
       steps: { title: string; description: string }[];
     }
   | {
       type: "projects";
+      eyebrow?: string;
       heading: string;
       intro?: string;
       ctaLabel: string;
     }
   | {
       type: "featureList";
+      eyebrow?: string;
       heading: string;
       subheading?: string;
       items: { title: string; description: string }[];
     }
   | {
       type: "testimonials";
-      heading: string;
-    }
-  | {
-      type: "pricing";
+      eyebrow?: string;
       heading: string;
       intro?: string;
     }
   | {
-      type: "faq";
+      type: "pricing";
+      eyebrow?: string;
       heading: string;
+      intro?: string;
+      footnote?: string;
+    }
+  | {
+      type: "faq";
+      eyebrow?: string;
+      heading: string;
+      intro?: string;
     }
   | {
       type: "cta";
@@ -62,13 +78,27 @@ export type HomeSection =
 export const homeSections: HomeSection[] = [
   {
     type: "hero",
+    eyebrow: "Web design and lead systems for local businesses",
     headline: "Websites Built to Bring Local Businesses More Customers",
     subheadline:
       "We design fast, professional websites that turn Google searches and website visitors into phone calls, estimate requests and customers.",
+    panel: {
+      heading: "Your free website review covers",
+      items: [
+        "How your site looks and works on a phone",
+        "Whether visitors can call or request an estimate in one tap",
+        "How you show up in Google for your services and area",
+        "Page speed and the fixes that matter",
+      ],
+      note: "Takes about 15 minutes. You get a short written summary either way.",
+    },
   },
   {
     type: "valueChecklist",
+    eyebrow: "What a website is for",
     heading: "Your website should do more than look good.",
+    intro:
+      "For a local service business the website has one job: turn the people who find you into people who call you.",
     items: [
       "Generate phone calls",
       "Capture estimate requests",
@@ -80,13 +110,16 @@ export const homeSections: HomeSection[] = [
   },
   {
     type: "services",
+    eyebrow: "Services",
     heading: "What we do",
     intro:
       "The website gets you found. Everything connected to it turns visitors into customers.",
   },
   {
     type: "steps",
+    eyebrow: "Process",
     heading: "How it works",
+    intro: "Five steps from first call to a website that brings in leads. Most sites launch in two to three weeks.",
     steps: [
       {
         title: "We learn your business",
@@ -116,12 +149,14 @@ export const homeSections: HomeSection[] = [
   },
   {
     type: "projects",
+    eyebrow: "Examples",
     heading: "Demo websites",
     intro: "See what a site built this way looks like for businesses like yours.",
     ctaLabel: "View demo",
   },
   {
     type: "featureList",
+    eyebrow: "Why us",
     heading: "Built for local businesses. Not generic templates.",
     items: [
       { title: "Fast", description: "Pages load in under two seconds on a phone." },
@@ -149,16 +184,21 @@ export const homeSections: HomeSection[] = [
   },
   {
     type: "testimonials",
+    eyebrow: "Reviews",
     heading: "What customers say",
   },
   {
     type: "pricing",
-    heading: "Pricing",
-    intro: "Clear one-time prices. No surprises.",
+    eyebrow: "Pricing",
+    heading: "Clear one-time prices. No surprises.",
+    intro: "Every package includes design, build, launch and a walkthrough. Optional monthly plans for hosting, reviews and lead follow-up are available after launch.",
+    footnote: "Prices are starting points. Larger sites and custom integrations are quoted after the free review.",
   },
   {
     type: "faq",
+    eyebrow: "FAQ",
     heading: "Common questions",
+    intro: "Anything else, just call. We answer the phone.",
   },
   {
     type: "cta",
