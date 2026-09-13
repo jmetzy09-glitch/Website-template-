@@ -60,6 +60,49 @@
   mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
+/* Sections rise in as they enter the viewport. Scroll-driven, CSS only; browsers
+   without support simply show the content. Off under reduced motion. */
+@keyframes reveal-in {
+  from {
+    opacity: 0.25;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+  }
+}
+
+/* Phone mockup: the tall screenshot scrolls slowly inside the bezel. */
+.phone-scroll {
+  container-type: size;
+}
+@keyframes phone-scroll {
+  0%,
+  8% {
+    transform: translateY(0);
+  }
+  92%,
+  100% {
+    transform: translateY(calc(-100% + 100cqh));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .phone-scroll-img {
+    animation: phone-scroll 22s ease-in-out infinite alternate;
+    animation-delay: 1.5s;
+  }
+}
+
 /* Restrained entrance motion for hero elements. Never starts fully transparent, so LCP is not delayed. Disabled under reduced motion below. */
 @keyframes rise {
   from {

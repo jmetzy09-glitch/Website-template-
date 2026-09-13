@@ -14,6 +14,7 @@ export type HomeSection =
       headline: string;
       subheadline: string;
       proofPoints?: string[];
+      tone?: "surface" | "ink";
       mockup: {
         desktop: { src: string; alt: string; width: number; height: number };
         phone: { src: string; alt: string; width: number; height: number };
@@ -63,6 +64,7 @@ export type HomeSection =
       heading: string;
       subheading?: string;
       items: { title: string; description: string }[];
+      tone?: "paper" | "ink";
     }
   | {
       type: "testimonials";
@@ -97,6 +99,7 @@ export const homeSections: HomeSection[] = [
     subheadline:
       "Fast, professional websites designed to turn Google searches and website visitors into phone calls, estimate requests and customers.",
     proofPoints: ["Mobile-first", "SEO-ready", "Lead tracking", "Built in West Texas"],
+    tone: "ink",
     mockup: {
       desktop: {
         src: "/images/examples/roofing-demo.jpg",
@@ -105,10 +108,10 @@ export const homeSections: HomeSection[] = [
         height: 1000,
       },
       phone: {
-        src: "/images/examples/roofing-demo-phone.jpg",
-        alt: "Phone view of the West Texas Roofing Co. demo website",
-        width: 780,
-        height: 1560,
+        src: "/images/examples/roofing-demo-phone-tall.jpg",
+        alt: "Phone view of the West Texas Roofing Co. demo website, scrolling through the page",
+        width: 585,
+        height: 3600,
       },
       url: "westtexasroofing.example",
       href: "/demos/roofing",
@@ -132,7 +135,7 @@ export const homeSections: HomeSection[] = [
       "Page speed and the fixes that matter",
     ],
     withCTA: true,
-    tone: "sand",
+    tone: "surface",
   },
   {
     type: "showcase",
@@ -181,6 +184,7 @@ export const homeSections: HomeSection[] = [
     type: "featureList",
     eyebrow: "Why us",
     heading: "Built for local businesses. Not generic templates.",
+    tone: "ink",
     items: [
       { title: "Fast", description: "Built for fast loading and excellent mobile performance." },
       { title: "Mobile-first", description: "Designed on a phone screen first, because that is where your customers are." },

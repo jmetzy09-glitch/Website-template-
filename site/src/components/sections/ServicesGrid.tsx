@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Service } from "@/content/services";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { ArrowRightIcon } from "@/components/ui/Icons";
+import { ArrowRightIcon, serviceIcons } from "@/components/ui/Icons";
 
 interface ServicesGridProps {
   eyebrow?: string;
@@ -14,7 +14,7 @@ interface ServicesGridProps {
 
 /**
  * Editorial list layout: heading column on the left, divided list of services
- * on the right. Deliberately not a card grid.
+ * on the right, each with an icon tile. Deliberately not a card grid.
  */
 export function ServicesGrid({ eyebrow, heading, intro, services, allServicesHref = "/services", headingLevel }: ServicesGridProps) {
   return (
@@ -31,24 +31,27 @@ export function ServicesGrid({ eyebrow, heading, intro, services, allServicesHre
       </div>
 
       <ol className="divide-y divide-line border-y border-line lg:col-span-8">
-        {services.map((service, i) => (
-          <li key={service.slug} className="grid gap-2 py-6 sm:grid-cols-[3rem_1fr] sm:gap-6">
-            <span className="font-heading text-sm font-semibold text-ink-muted" aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <h3 className="font-heading text-xl font-bold text-ink">
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="underline-offset-4 hover:text-accent hover:underline"
-                >
-                  {service.name}
-                </Link>
-              </h3>
-              <p className="mt-2 max-w-prose leading-relaxed text-ink-muted">{service.summary}</p>
-            </div>
-          </li>
-        ))}
+        {services.map((service, i) => {
+          const Icon = service.icon ? serviceIcons[service.icon] : null;
+          return (
+            <li key={service.slug} className="group grid gap-3 py-6 sm:grid-cols-[3.25rem_1fr] sm:gap-6">
+              <span
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-ink text-white transition-colors group-hover:bg-accent"
+                aria-hidden="true"
+              >
+                {Icon ? <Icon /> : <span className="font-heading text-sm font-bold">{String(i + 1).padStart(2, "0")}</span>}
+              </span>
+              <div>
+                <h3 className="font-heading text-xl font-bold text-ink">
+                  <Link href={`/services/${service.slug}`} className="underline-offset-4 hover:text-accent hover:underline">
+                    {service.name}
+                  </Link>
+                </h3>
+                <p className="mt-2 max-w-prose leading-relaxed text-ink-muted">{service.summary}</p>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </Section>
   );

@@ -36,6 +36,7 @@ function renderSection(section: HomeSection, index: number) {
           secondaryCTA={conversion.secondaryCTA}
           proofPoints={section.proofPoints}
           mockup={section.mockup}
+          tone={section.tone}
         />
       );
     case "credibility":
@@ -71,7 +72,7 @@ function renderSection(section: HomeSection, index: number) {
       return <StepsList key={key} eyebrow={section.eyebrow} heading={section.heading} intro={section.intro} steps={section.steps} />;
     case "featureList":
       return (
-        <FeatureList key={key} eyebrow={section.eyebrow} heading={section.heading} subheading={section.subheading} items={section.items} />
+        <FeatureList key={key} eyebrow={section.eyebrow} heading={section.heading} subheading={section.subheading} items={section.items} tone={section.tone} />
       );
     case "testimonials":
       if (!features.reviews) return null;
@@ -100,7 +101,7 @@ function renderSection(section: HomeSection, index: number) {
           cta={conversion.primaryCTA}
           phone={business.phone}
           phoneHref={phoneHref}
-          tone="ink"
+          tone="accent"
         />
       );
   }

@@ -10,6 +10,8 @@ interface SectionProps {
   tone?: Tone;
   className?: string;
   containerClassName?: string;
+  /** Gentle rise-in as the section scrolls into view (CSS scroll-driven, no JS). */
+  reveal?: boolean;
 }
 
 const toneClass: Record<Tone, string> = {
@@ -26,9 +28,10 @@ export function Section({
   tone = "paper",
   className,
   containerClassName,
+  reveal = true,
 }: SectionProps) {
   return (
-    <section aria-labelledby={labelledBy} className={cn("py-16 sm:py-20 lg:py-24", toneClass[tone], className)}>
+    <section aria-labelledby={labelledBy} className={cn("py-16 sm:py-20 lg:py-24", toneClass[tone], reveal && "reveal", className)}>
       <Container className={containerClassName}>{children}</Container>
     </section>
   );

@@ -1,5 +1,9 @@
+import type { ServiceIconName } from "@/components/ui/Icons";
+
 export interface Service {
   slug: string;
+  /** Icon shown next to the service in lists. */
+  icon?: ServiceIconName;
   name: string;
   /** One-line summary shown on cards. */
   summary: string;
@@ -12,6 +16,7 @@ export interface Service {
 export const services: Service[] = [
   {
     slug: "websites",
+    icon: "layout",
     name: "Professional Websites",
     summary:
       "Fast, mobile-first websites designed to turn visitors into phone calls and estimate requests.",
@@ -28,6 +33,7 @@ export const services: Service[] = [
   },
   {
     slug: "local-seo",
+    icon: "map-pin",
     name: "Local SEO",
     summary:
       "Service and city pages that help you show up when people nearby search for what you do.",
@@ -43,6 +49,7 @@ export const services: Service[] = [
   },
   {
     slug: "google-business",
+    icon: "store",
     name: "Google Business Profile",
     summary:
       "Optimize the listing that shows up in the map results, where most local calls come from.",
@@ -58,6 +65,7 @@ export const services: Service[] = [
   },
   {
     slug: "lead-capture",
+    icon: "inbox",
     name: "Lead Capture",
     summary:
       "Quote and estimate forms that reach you in seconds, with every lead tracked.",
@@ -73,6 +81,7 @@ export const services: Service[] = [
   },
   {
     slug: "review-automation",
+    icon: "star",
     name: "Review Automation",
     summary:
       "Automatically ask happy customers for a Google review after every completed job.",
@@ -87,6 +96,7 @@ export const services: Service[] = [
   },
   {
     slug: "business-automation",
+    icon: "cog",
     name: "Business Automation",
     summary:
       "Small systems that remove the repetitive work your team does by hand every day.",
@@ -101,6 +111,7 @@ export const services: Service[] = [
   },
   {
     slug: "hosting-maintenance",
+    icon: "server",
     name: "Hosting & Maintenance",
     summary:
       "Fast hosting, backups, security updates and small changes, handled for you.",
